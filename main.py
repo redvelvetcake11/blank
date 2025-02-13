@@ -2,27 +2,17 @@ import os
 import subprocess
 import urllib.request
 
-def run_command(command):
-    """ Helper function to run the command and capture stdout and stderr """
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    stdout, stderr = process.communicate()  # Capture output and error messages
-    return process.returncode, stdout, stderr
-
 # Step 1: Git Clone
-returncode, stdout, stderr = run_command("git clone https://git.coolaj86.com/coolaj86/telebit.js ~/Applications/telebit || true")
-print(f"Git Clone - Return Code: {returncode}\nSTDOUT: {stdout}\nSTDERR: {stderr}")
+idk = subprocess.run("git clone https://git.coolaj86.com/coolaj86/telebit.js ~/Applications/telebit || true")
 
 # Step 2: Wget and Extract NodeJS
-returncode, stdout, stderr = run_command("wget https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz -O~/node.tar.xz && tar -xvf ~/node.tar.xz --strip-components=1 -C /opt/telebit || true")
-print(f"Wget and Extract NodeJS - Return Code: {returncode}\nSTDOUT: {stdout}\nSTDERR: {stderr}")
+idk2 = subprocess.run("wget https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz -O~/node.tar.xz && tar -xvf ~/node.tar.xz --strip-components=1 -C /opt/telebit || true")
 
 # Step 3: Remove node.tar.xz
-returncode, stdout, stderr = run_command("rm -rf ~/node.tar.xz || true")
-print(f"Remove Node Tar - Return Code: {returncode}\nSTDOUT: {stdout}\nSTDERR: {stderr}")
+idk3 = subprocess.run("rm -rf ~/node.tar.xz || true")
 
 # Step 4: NPM Install
-returncode, stdout, stderr = run_command("cd ~/Applications/telebit && npm install --force || true")
-print(f"NPM Install - Return Code: {returncode}\nSTDOUT: {stdout}\nSTDERR: {stderr}")
+idk4 = subprocess.run("cd ~/Applications/telebit && npm install --force || true")
 
 # Telebit config content
 telebitd_content = """
