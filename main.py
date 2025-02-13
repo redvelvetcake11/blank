@@ -44,6 +44,8 @@ os.makedirs(os.path.dirname(file_path), exist_ok=True)
 with open(file_path2, "w") as file:
     file.write("sock: /opt/buildhome/.local/share/telebit/var/run/telebit.sock")
 
+os.makedirs("/opt/buildhome/.local/share/telebit/var/run", exist_ok=True)
+
 # Start Telebit daemon
 subprocess.Popen("/opt/buildhome/Applications/telebit/bin/node /opt/buildhome/Applications/telebit/bin/telebitd.js", 
                  shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, executable='/bin/bash')
