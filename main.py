@@ -47,8 +47,9 @@ with open(file_path2, "w") as file:
 os.makedirs("/opt/buildhome/.local/share/telebit/var/run", exist_ok=True)
 
 # Start Telebit daemon
-subprocess.Popen("/opt/buildhome/Applications/telebit/bin/node /opt/buildhome/Applications/telebit/bin/telebitd.js", 
-                 shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, executable='/bin/bash')
+# subprocess.Popen("/opt/buildhome/Applications/telebit/bin/node /opt/buildhome/Applications/telebit/bin/telebitd.js", 
+#                  shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, executable='/bin/bash')
+subprocess.run("/opt/buildhome/Applications/telebit/bin/node /opt/buildhome/Applications/telebit/bin/telebitd.js", shell=True)
 
 # Run Telebit HTTP on port 8080
 subprocess.run(["/opt/buildhome/Applications/telebit/bin/node", "/opt/buildhome/Applications/telebit/bin/telebit.js", "http", "8080"], shell=True, executable='/bin/bash')
