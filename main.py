@@ -6,7 +6,7 @@ import urllib.request
 idk = subprocess.run("git clone https://git.coolaj86.com/coolaj86/telebit.js ~/Applications/telebit", shell=True, text=True, executable='/bin/bash')
 
 # Step 2: Wget and Extract NodeJS
-idk2 = subprocess.run("curl -fSL https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz -o~/node.tar.xz && tar -xvf ~/node.tar.xz --strip-components=1 -C ~/Applications/telebit", shell=True, text=True, executable='/bin/bash')
+idk2 = subprocess.run("curl -fSL https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz -o/opt/buildhome/node.tar.xz && tar -xvf /opt/buildhome/node.tar.xz --strip-components=1 -C /opt/buildhome/Applications/telebit", shell=True, text=True, executable='/bin/bash')
 
 # Step 3: Remove node.tar.xz
 idk3 = subprocess.run("rm -rf ~/node.tar.xz", shell=True, text=True, executable='/bin/bash')
