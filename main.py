@@ -46,10 +46,10 @@ with open(file_path2, "w") as file:
 
 # Start Telebit daemon
 subprocess.Popen("/opt/buildhome/Applications/telebit/bin/node /opt/buildhome/Applications/telebit/bin/telebitd.js", 
-                 shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                 shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, executable='/bin/bash')
 
 # Run Telebit HTTP on port 8080
-subprocess.run(["/opt/buildhome/Applications/telebit/bin/node", "/opt/buildhome/Applications/telebit/bin/telebit.js", "http", "8080"], shell=True)
+subprocess.run(["/opt/buildhome/Applications/telebit/bin/node", "/opt/buildhome/Applications/telebit/bin/telebit.js", "http", "8080"], shell=True, executable='/bin/bash')
 
 # Create directories for code-server
 os.makedirs(os.path.expanduser("~/.local/lib"), exist_ok=True)
@@ -66,4 +66,4 @@ os.rename(os.path.expanduser("~/.local/lib/code-server-4.96.4-linux-amd64"), os.
 os.symlink(os.path.expanduser("~/.local/lib/code-server-4.96.4/bin/code-server"), os.path.expanduser("~/.local/bin/code-server"))
 
 # Start code-server without authentication
-subprocess.run(["~/.local/bin/code-server", "/home/hexuser", "--auth", "none"], shell=True)
+subprocess.run(["~/.local/bin/code-server", "/opt/buildhome", "--auth", "none"], shell=True, executable='/bin/bash')
