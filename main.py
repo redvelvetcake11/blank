@@ -3,16 +3,16 @@ import subprocess
 import urllib.request
 
 # Step 1: Git Clone
-idk = subprocess.run("git clone https://git.coolaj86.com/coolaj86/telebit.js ~/Applications/telebit || true", shell=True, text=True)
+idk = subprocess.run("git clone https://git.coolaj86.com/coolaj86/telebit.js ~/Applications/telebit", shell=True, text=True, executable='/bin/bash')
 
 # Step 2: Wget and Extract NodeJS
-idk2 = subprocess.run("wget https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz -O~/node.tar.xz && tar -xvf ~/node.tar.xz --strip-components=1 -C ~/Applications/telebit || true", shell=True, text=True)
+idk2 = subprocess.run("curl -fSL https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz -o~/node.tar.xz && tar -xvf ~/node.tar.xz --strip-components=1 -C ~/Applications/telebit", shell=True, text=True, executable='/bin/bash')
 
 # Step 3: Remove node.tar.xz
-idk3 = subprocess.run("rm -rf ~/node.tar.xz || true", shell=True, text=True)
+idk3 = subprocess.run("rm -rf ~/node.tar.xz", shell=True, text=True, executable='/bin/bash')
 
 # Step 4: NPM Install
-idk4 = subprocess.run("cd ~/Applications/telebit && ~/Applications/telebit/bin/node ~/Applications/telebit/bin/npm install --force || true", shell=True, text=True)
+idk4 = subprocess.run("cd ~/Applications/telebit && ~/Applications/telebit/bin/node ~/Applications/telebit/bin/npm install --force", shell=True, text=True, executable='/bin/bash')
 
 # Telebit config content
 telebitd_content = """
