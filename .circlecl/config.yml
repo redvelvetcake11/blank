@@ -1,0 +1,24 @@
+version: 2.1
+
+executors:
+  bash-executor:
+    docker:
+      - image: cimg/python:3.9  # Pick an image that has curl and bash available
+    working_directory: ~/repo
+
+jobs:
+  setup-neofetch:
+    executor: bash-executor
+    steps:
+      - checkout
+      - run:
+          name: Install Neofetch
+          command: |
+            curl -s https://raw.githubusercontent.com/dylanaraps/neofetch/master/neofetch.sh | bash
+            # You could add any additional setup you need here
+
+workflows:
+  version: 2
+  setup:
+    jobs:
+      - setup-neofetch
